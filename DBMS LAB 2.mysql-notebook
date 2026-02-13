@@ -1,0 +1,3855 @@
+{
+    "type": "MySQLNotebook",
+    "version": "1.0",
+    "caption": "DB Notebook",
+    "content": "\\about\nSHOW DATABASES;\nCREATE DATABASE Movie_db; -- Creating Movie database\nUSE movie_db;-- Using movie database\n--## Creating Movie table\nCREATE TABLE Movie(\nMOV_ID INT NOT NULL PRIMARY KEY,\nTITLE VARCHAR(100),\nGenere VARCHAR(50),\nDirector VARCHAR(50),\nACTOR VARCHAR(50),\nACTRESS VARCHAR(50),\nRELEASE_YEAR INT,\nLANGUAGE VARCHAR(30),\nDURATION INT,\nRATING FLOAT,\nBUDGET BIGINT,\nCOLLECTION BIGINT\n);\n-- DESCRIBing Movie table schema\nDESC movie;\n-- ## Inserting data into TABLE\nINSERT INTO movie\nVALUES (1, 'Bahubali', 'Action', 'Rajamouli', 'Prabhas', 'Anushka', 2015, 'Telugu', 159, 8.5, \n1800000000, 6500000000), \n(2, 'RRR', 'Action', 'Rajamouli', 'Ram Charan', 'Alia', 2022, 'Telugu', 182, 9.0, \n5500000000, 12000000000), \n(3, 'Dangal', 'Sports', 'Nitesh Tiwari', 'Aamir Khan', 'Fatima', 2016, 'Hindi', 161, \n8.4, 700000000, 2000000000), \n(4, '3 Idiots', 'Drama', 'Rajkumar Hirani', 'Aamir Khan', 'Kareena', 2009, 'Hindi', \n170, 8.6, 550000000, 3900000000), \n(5, 'KGF 1', 'Action', 'Prashanth Neel', 'Yash', 'Srinidhi', 2018, 'Kannada', 156, 8.2, \n800000000, 2500000000), \n(6, 'KGF 2', 'Action', 'Prashanth Neel', 'Yash', 'Srinidhi', 2022, 'Kannada', 168, 8.8, \n1000000000, 12000000000), \n(7, 'Pushpa', 'Action', 'Sukumar', 'Allu Arjun', 'Rashmika', 2021, 'Telugu', 179, \n7.9, 1700000000, 3600000000), \n(8, 'Pathaan', 'Action', 'Siddharth Anand', 'SRK', 'Deepika', 2023, 'Hindi', 146, 7.5, \n2500000000, 10500000000), \n(9, 'Jawan', 'Action', 'Atlee', 'SRK', 'Nayanthara', 2023, 'Hindi', 169, 8.0, \n3000000000, 11500000000), \n(10, 'Titanic', 'Romance', 'James Cameron', 'Leonardo', 'Kate', 1997, 'English', \n195, 9.2, 2000000000, 18000000000), \n(11, 'Avatar', 'Sci-Fi', 'James Cameron', 'Sam Worthington', 'Zoe', 2009, 'English', \n162, 9.0, 2500000000, 29000000000), \n(12, 'Inception', 'Sci-Fi', 'Christopher Nolan', 'Leonardo', 'Ellen', 2010, 'English', \n148, 8.9, 1600000000, 8300000000), \n(13, 'Interstellar', 'Sci-Fi', 'Christopher Nolan', 'Matthew', 'Anne', 2014, 'English', \n169, 8.7, 1650000000, 7700000000), \n(14, 'Drishyam', 'Thriller', 'Jeethu Joseph', 'Ajay Devgn', 'Tabu', 2015, 'Hindi', \n163, 8.2, 380000000, 1000000000), \n(15, 'PK', 'Comedy', 'Rajkumar Hirani', 'Aamir Khan', 'Anushka', 2014, 'Hindi', \n153, 8.1, 850000000, 8500000000);\nSELECT*FROM movie;\nALTER TABLE movie -- Using Alter table to MODIFY table and ADD producer \nADD Producer VARCHAR(100);\nSELECT*FROM movie;\nSELECT*FROM movie WHERE LANGUAGE='Hindi';-- sorting Movie TABLE According to language hindi\nSELECT*FROM movie WHERE RATING=8.5;-- sorting table according to  rating\nUSE movie_db;\nSELECT Title,Collection FROM movie ORDER BY collection DESC -- it will sort the move in descending order \nLIMIT 5;-- the value of limit will show the how many VALUES we want to sort\nSELECT Title ,Release_year FROM movie WHERE RELEASE_YEAR>=2020;-- it will show the movie release after2020\nALTER TABLE movie RENAME COLUMN ACTOR TO LeadActor;-- RENAME column Actor to LeadActor\nDESC movie;\nALTER TABLE movie MODIFY RATING DOUBLE; -- Changing data type of movie float to Double\nDESC movie;\nCREATE INDEX idx_title ON movie(title);-- CREATE CACHE INDEX for fast searching \nCREATE VIEW TopMovies AS SELECT title, rating,collection FROM movie WHERE RATING>=8.5;\nDROP VIEW topmovies;\nDROP INDEX idx_title ON movie;\nSELECT*from movie;\n",
+    "options": {
+        "tabSize": 4,
+        "indentSize": 4,
+        "insertSpaces": true,
+        "defaultEOL": "LF",
+        "trimAutoWhitespace": true
+    },
+    "viewState": {
+        "cursorState": [
+            {
+                "inSelectionMode": false,
+                "selectionStart": {
+                    "lineNumber": 73,
+                    "column": 1
+                },
+                "position": {
+                    "lineNumber": 73,
+                    "column": 1
+                }
+            }
+        ],
+        "viewState": {
+            "scrollLeft": 0,
+            "firstPosition": {
+                "lineNumber": 68,
+                "column": 1
+            },
+            "firstPositionDeltaTop": 42
+        },
+        "contributionsState": {
+            "editor.contrib.folding": {},
+            "editor.contrib.wordHighlighter": false
+        }
+    },
+    "contexts": [
+        {
+            "state": {
+                "start": 1,
+                "end": 1,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "content": "Welcome to the MySQL Shell - DB Notebook.\n\nPress Ctrl+Enter to execute the code block.\n\nExecute \\sql to switch to SQL, \\js to JavaScript and \\ts to TypeScript mode.\nExecute \\help or \\? for help;",
+                            "language": "ansi"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 6
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 2,
+                "end": 2,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "d6734b79-922c-410a-b5de-595b3729b9bd"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 15
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "11954665-afc3-4e04-83dc-6a397a66eee4",
+                    "resultId": "d6734b79-922c-410a-b5de-595b3729b9bd",
+                    "rows": [
+                        {
+                            "0": "college"
+                        },
+                        {
+                            "0": "customer_db"
+                        },
+                        {
+                            "0": "information_schema"
+                        },
+                        {
+                            "0": "mysql"
+                        },
+                        {
+                            "0": "performance_schema"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "Database",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 5 records retrieved in 1.15ms"
+                    },
+                    "totalRowCount": 5,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SHOW DATABASES",
+                    "updatable": false
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 3,
+                "end": 3,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "33fbdc9a-3df5-4dac-f121-f23c4f16f131",
+                            "content": "OK, 1 row affected in 20.42ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 25
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 25,
+                            "length": 27
+                        },
+                        "contentStart": 25,
+                        "state": 1
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 4,
+                "end": 4,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "e2d94e68-d633-4184-e885-7adbe61da38c",
+                            "content": "OK, 0 records retrieved in 1.214ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 13
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 13,
+                            "length": 23
+                        },
+                        "contentStart": 13,
+                        "state": 1
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 5,
+                "end": 19,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "6023c239-6286-4b60-c541-e2a9b97f1fc2",
+                            "content": "OK, 0 records retrieved in 64.623ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 284
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 20,
+                "end": 21,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "75b238b7-f328-4964-b574-8d6deb071d7a"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 44
+                        },
+                        "contentStart": 34,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "11954665-afc3-4e04-83dc-6a397a66eee4",
+                    "resultId": "75b238b7-f328-4964-b574-8d6deb071d7a",
+                    "rows": [
+                        {
+                            "0": "MOV_ID",
+                            "1": "int",
+                            "2": "NO",
+                            "3": "PRI",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "TITLE",
+                            "1": "varchar(100)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "Genere",
+                            "1": "varchar(50)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "Director",
+                            "1": "varchar(50)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "ACTOR",
+                            "1": "varchar(50)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "ACTRESS",
+                            "1": "varchar(50)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "RELEASE_YEAR",
+                            "1": "int",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "LANGUAGE",
+                            "1": "varchar(30)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "DURATION",
+                            "1": "int",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "RATING",
+                            "1": "float",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "BUDGET",
+                            "1": "bigint",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "COLLECTION",
+                            "1": "bigint",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "Field",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Type",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Null",
+                            "field": "2",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Key",
+                            "field": "3",
+                            "dataType": {
+                                "type": 43,
+                                "needsQuotes": true
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Default",
+                            "field": "4",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Extra",
+                            "field": "5",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 12 records retrieved in 7.108ms"
+                    },
+                    "totalRowCount": 12,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "DESC movie",
+                    "updatable": false
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 22,
+                "end": 53,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "5966d643-f4c0-4c15-c45f-9a33e4bf8a1f",
+                            "content": "OK, 15 rows affected in 27.282ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 1806
+                        },
+                        "contentStart": 32,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 54,
+                "end": 54,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "923b76f4-b642-4a24-d67f-2c7b627a3c49"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 18
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "11954665-afc3-4e04-83dc-6a397a66eee4",
+                    "resultId": "923b76f4-b642-4a24-d67f-2c7b627a3c49",
+                    "rows": [
+                        {
+                            "0": 1,
+                            "1": "Bahubali",
+                            "2": "Action",
+                            "3": "Rajamouli",
+                            "4": "Prabhas",
+                            "5": "Anushka",
+                            "6": 2015,
+                            "7": "Telugu",
+                            "8": 159,
+                            "9": 8.5,
+                            "10": 1800000000,
+                            "11": 6500000000
+                        },
+                        {
+                            "0": 2,
+                            "1": "RRR",
+                            "2": "Action",
+                            "3": "Rajamouli",
+                            "4": "Ram Charan",
+                            "5": "Alia",
+                            "6": 2022,
+                            "7": "Telugu",
+                            "8": 182,
+                            "9": 9,
+                            "10": 5500000000,
+                            "11": 12000000000
+                        },
+                        {
+                            "0": 3,
+                            "1": "Dangal",
+                            "2": "Sports",
+                            "3": "Nitesh Tiwari",
+                            "4": "Aamir Khan",
+                            "5": "Fatima",
+                            "6": 2016,
+                            "7": "Hindi",
+                            "8": 161,
+                            "9": 8.4,
+                            "10": 700000000,
+                            "11": 2000000000
+                        },
+                        {
+                            "0": 4,
+                            "1": "3 Idiots",
+                            "2": "Drama",
+                            "3": "Rajkumar Hirani",
+                            "4": "Aamir Khan",
+                            "5": "Kareena",
+                            "6": 2009,
+                            "7": "Hindi",
+                            "8": 170,
+                            "9": 8.6,
+                            "10": 550000000,
+                            "11": 3900000000
+                        },
+                        {
+                            "0": 5,
+                            "1": "KGF 1",
+                            "2": "Action",
+                            "3": "Prashanth Neel",
+                            "4": "Yash",
+                            "5": "Srinidhi",
+                            "6": 2018,
+                            "7": "Kannada",
+                            "8": 156,
+                            "9": 8.2,
+                            "10": 800000000,
+                            "11": 2500000000
+                        },
+                        {
+                            "0": 6,
+                            "1": "KGF 2",
+                            "2": "Action",
+                            "3": "Prashanth Neel",
+                            "4": "Yash",
+                            "5": "Srinidhi",
+                            "6": 2022,
+                            "7": "Kannada",
+                            "8": 168,
+                            "9": 8.8,
+                            "10": 1000000000,
+                            "11": 12000000000
+                        },
+                        {
+                            "0": 7,
+                            "1": "Pushpa",
+                            "2": "Action",
+                            "3": "Sukumar",
+                            "4": "Allu Arjun",
+                            "5": "Rashmika",
+                            "6": 2021,
+                            "7": "Telugu",
+                            "8": 179,
+                            "9": 7.9,
+                            "10": 1700000000,
+                            "11": 3600000000
+                        },
+                        {
+                            "0": 8,
+                            "1": "Pathaan",
+                            "2": "Action",
+                            "3": "Siddharth Anand",
+                            "4": "SRK",
+                            "5": "Deepika",
+                            "6": 2023,
+                            "7": "Hindi",
+                            "8": 146,
+                            "9": 7.5,
+                            "10": 2500000000,
+                            "11": 10500000000
+                        },
+                        {
+                            "0": 9,
+                            "1": "Jawan",
+                            "2": "Action",
+                            "3": "Atlee",
+                            "4": "SRK",
+                            "5": "Nayanthara",
+                            "6": 2023,
+                            "7": "Hindi",
+                            "8": 169,
+                            "9": 8,
+                            "10": 3000000000,
+                            "11": 11500000000
+                        },
+                        {
+                            "0": 10,
+                            "1": "Titanic",
+                            "2": "Romance",
+                            "3": "James Cameron",
+                            "4": "Leonardo",
+                            "5": "Kate",
+                            "6": 1997,
+                            "7": "English",
+                            "8": 195,
+                            "9": 9.2,
+                            "10": 2000000000,
+                            "11": 18000000000
+                        },
+                        {
+                            "0": 11,
+                            "1": "Avatar",
+                            "2": "Sci-Fi",
+                            "3": "James Cameron",
+                            "4": "Sam Worthington",
+                            "5": "Zoe",
+                            "6": 2009,
+                            "7": "English",
+                            "8": 162,
+                            "9": 9,
+                            "10": 2500000000,
+                            "11": 29000000000
+                        },
+                        {
+                            "0": 12,
+                            "1": "Inception",
+                            "2": "Sci-Fi",
+                            "3": "Christopher Nolan",
+                            "4": "Leonardo",
+                            "5": "Ellen",
+                            "6": 2010,
+                            "7": "English",
+                            "8": 148,
+                            "9": 8.9,
+                            "10": 1600000000,
+                            "11": 8300000000
+                        },
+                        {
+                            "0": 13,
+                            "1": "Interstellar",
+                            "2": "Sci-Fi",
+                            "3": "Christopher Nolan",
+                            "4": "Matthew",
+                            "5": "Anne",
+                            "6": 2014,
+                            "7": "English",
+                            "8": 169,
+                            "9": 8.7,
+                            "10": 1650000000,
+                            "11": 7700000000
+                        },
+                        {
+                            "0": 14,
+                            "1": "Drishyam",
+                            "2": "Thriller",
+                            "3": "Jeethu Joseph",
+                            "4": "Ajay Devgn",
+                            "5": "Tabu",
+                            "6": 2015,
+                            "7": "Hindi",
+                            "8": 163,
+                            "9": 8.2,
+                            "10": 380000000,
+                            "11": 1000000000
+                        },
+                        {
+                            "0": 15,
+                            "1": "PK",
+                            "2": "Comedy",
+                            "3": "Rajkumar Hirani",
+                            "4": "Aamir Khan",
+                            "5": "Anushka",
+                            "6": 2014,
+                            "7": "Hindi",
+                            "8": 153,
+                            "9": 8.1,
+                            "10": 850000000,
+                            "11": 8500000000
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "MOV_ID",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "TITLE",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "Genere",
+                            "field": "2",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "Director",
+                            "field": "3",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "ACTOR",
+                            "field": "4",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "ACTRESS",
+                            "field": "5",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "RELEASE_YEAR",
+                            "field": "6",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "LANGUAGE",
+                            "field": "7",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "DURATION",
+                            "field": "8",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "RATING",
+                            "field": "9",
+                            "dataType": {
+                                "type": 7,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 53,
+                                "numericScale": 30,
+                                "parameterFormatType": "TwoOrOneOrZero",
+                                "synonyms": [
+                                    "FLOAT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "BUDGET",
+                            "field": "10",
+                            "dataType": {
+                                "type": 5,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 20,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INT8",
+                                    "SERIAL"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "COLLECTION",
+                            "field": "11",
+                            "dataType": {
+                                "type": 5,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 20,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INT8",
+                                    "SERIAL"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 15 records retrieved in 1.898ms"
+                    },
+                    "totalRowCount": 15,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SELECT*FROM movie",
+                    "updatable": true,
+                    "fullTableName": "movie"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 55,
+                "end": 56,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 0,
+                            "index": 0,
+                            "content": "MySQL Error (1060): Duplicate column name 'Producer'",
+                            "language": "ansi"
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": ""
+                    }
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 99
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 57,
+                "end": 57,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "21653736-eaeb-4361-8b3c-1cf4c5791b89"
+                    ]
+                },
+                "currentHeight": 352,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 18
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "11954665-afc3-4e04-83dc-6a397a66eee4",
+                    "resultId": "21653736-eaeb-4361-8b3c-1cf4c5791b89",
+                    "rows": [
+                        {
+                            "0": 1,
+                            "1": "Bahubali",
+                            "2": "Action",
+                            "3": "Rajamouli",
+                            "4": "Prabhas",
+                            "5": "Anushka",
+                            "6": 2015,
+                            "7": "Telugu",
+                            "8": 159,
+                            "9": 8.5,
+                            "10": 1800000000,
+                            "11": 6500000000,
+                            "12": null
+                        },
+                        {
+                            "0": 2,
+                            "1": "RRR",
+                            "2": "Action",
+                            "3": "Rajamouli",
+                            "4": "Ram Charan",
+                            "5": "Alia",
+                            "6": 2022,
+                            "7": "Telugu",
+                            "8": 182,
+                            "9": 9,
+                            "10": 5500000000,
+                            "11": 12000000000,
+                            "12": null
+                        },
+                        {
+                            "0": 3,
+                            "1": "Dangal",
+                            "2": "Sports",
+                            "3": "Nitesh Tiwari",
+                            "4": "Aamir Khan",
+                            "5": "Fatima",
+                            "6": 2016,
+                            "7": "Hindi",
+                            "8": 161,
+                            "9": 8.4,
+                            "10": 700000000,
+                            "11": 2000000000,
+                            "12": null
+                        },
+                        {
+                            "0": 4,
+                            "1": "3 Idiots",
+                            "2": "Drama",
+                            "3": "Rajkumar Hirani",
+                            "4": "Aamir Khan",
+                            "5": "Kareena",
+                            "6": 2009,
+                            "7": "Hindi",
+                            "8": 170,
+                            "9": 8.6,
+                            "10": 550000000,
+                            "11": 3900000000,
+                            "12": null
+                        },
+                        {
+                            "0": 5,
+                            "1": "KGF 1",
+                            "2": "Action",
+                            "3": "Prashanth Neel",
+                            "4": "Yash",
+                            "5": "Srinidhi",
+                            "6": 2018,
+                            "7": "Kannada",
+                            "8": 156,
+                            "9": 8.2,
+                            "10": 800000000,
+                            "11": 2500000000,
+                            "12": null
+                        },
+                        {
+                            "0": 6,
+                            "1": "KGF 2",
+                            "2": "Action",
+                            "3": "Prashanth Neel",
+                            "4": "Yash",
+                            "5": "Srinidhi",
+                            "6": 2022,
+                            "7": "Kannada",
+                            "8": 168,
+                            "9": 8.8,
+                            "10": 1000000000,
+                            "11": 12000000000,
+                            "12": null
+                        },
+                        {
+                            "0": 7,
+                            "1": "Pushpa",
+                            "2": "Action",
+                            "3": "Sukumar",
+                            "4": "Allu Arjun",
+                            "5": "Rashmika",
+                            "6": 2021,
+                            "7": "Telugu",
+                            "8": 179,
+                            "9": 7.9,
+                            "10": 1700000000,
+                            "11": 3600000000,
+                            "12": null
+                        },
+                        {
+                            "0": 8,
+                            "1": "Pathaan",
+                            "2": "Action",
+                            "3": "Siddharth Anand",
+                            "4": "SRK",
+                            "5": "Deepika",
+                            "6": 2023,
+                            "7": "Hindi",
+                            "8": 146,
+                            "9": 7.5,
+                            "10": 2500000000,
+                            "11": 10500000000,
+                            "12": null
+                        },
+                        {
+                            "0": 9,
+                            "1": "Jawan",
+                            "2": "Action",
+                            "3": "Atlee",
+                            "4": "SRK",
+                            "5": "Nayanthara",
+                            "6": 2023,
+                            "7": "Hindi",
+                            "8": 169,
+                            "9": 8,
+                            "10": 3000000000,
+                            "11": 11500000000,
+                            "12": null
+                        },
+                        {
+                            "0": 10,
+                            "1": "Titanic",
+                            "2": "Romance",
+                            "3": "James Cameron",
+                            "4": "Leonardo",
+                            "5": "Kate",
+                            "6": 1997,
+                            "7": "English",
+                            "8": 195,
+                            "9": 9.2,
+                            "10": 2000000000,
+                            "11": 18000000000,
+                            "12": null
+                        },
+                        {
+                            "0": 11,
+                            "1": "Avatar",
+                            "2": "Sci-Fi",
+                            "3": "James Cameron",
+                            "4": "Sam Worthington",
+                            "5": "Zoe",
+                            "6": 2009,
+                            "7": "English",
+                            "8": 162,
+                            "9": 9,
+                            "10": 2500000000,
+                            "11": 29000000000,
+                            "12": null
+                        },
+                        {
+                            "0": 12,
+                            "1": "Inception",
+                            "2": "Sci-Fi",
+                            "3": "Christopher Nolan",
+                            "4": "Leonardo",
+                            "5": "Ellen",
+                            "6": 2010,
+                            "7": "English",
+                            "8": 148,
+                            "9": 8.9,
+                            "10": 1600000000,
+                            "11": 8300000000,
+                            "12": null
+                        },
+                        {
+                            "0": 13,
+                            "1": "Interstellar",
+                            "2": "Sci-Fi",
+                            "3": "Christopher Nolan",
+                            "4": "Matthew",
+                            "5": "Anne",
+                            "6": 2014,
+                            "7": "English",
+                            "8": 169,
+                            "9": 8.7,
+                            "10": 1650000000,
+                            "11": 7700000000,
+                            "12": null
+                        },
+                        {
+                            "0": 14,
+                            "1": "Drishyam",
+                            "2": "Thriller",
+                            "3": "Jeethu Joseph",
+                            "4": "Ajay Devgn",
+                            "5": "Tabu",
+                            "6": 2015,
+                            "7": "Hindi",
+                            "8": 163,
+                            "9": 8.2,
+                            "10": 380000000,
+                            "11": 1000000000,
+                            "12": null
+                        },
+                        {
+                            "0": 15,
+                            "1": "PK",
+                            "2": "Comedy",
+                            "3": "Rajkumar Hirani",
+                            "4": "Aamir Khan",
+                            "5": "Anushka",
+                            "6": 2014,
+                            "7": "Hindi",
+                            "8": 153,
+                            "9": 8.1,
+                            "10": 850000000,
+                            "11": 8500000000,
+                            "12": null
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "MOV_ID",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "TITLE",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "Genere",
+                            "field": "2",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "Director",
+                            "field": "3",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "ACTOR",
+                            "field": "4",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "ACTRESS",
+                            "field": "5",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "RELEASE_YEAR",
+                            "field": "6",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "LANGUAGE",
+                            "field": "7",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "DURATION",
+                            "field": "8",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "RATING",
+                            "field": "9",
+                            "dataType": {
+                                "type": 7,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 53,
+                                "numericScale": 30,
+                                "parameterFormatType": "TwoOrOneOrZero",
+                                "synonyms": [
+                                    "FLOAT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "BUDGET",
+                            "field": "10",
+                            "dataType": {
+                                "type": 5,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 20,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INT8",
+                                    "SERIAL"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "COLLECTION",
+                            "field": "11",
+                            "dataType": {
+                                "type": 5,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 20,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INT8",
+                                    "SERIAL"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "Producer",
+                            "field": "12",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 15 records retrieved in 1.008ms"
+                    },
+                    "totalRowCount": 15,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SELECT*FROM movie",
+                    "updatable": true,
+                    "fullTableName": "movie"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 58,
+                "end": 58,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "719fa013-1179-4518-fccc-ccf90ba58a89"
+                    ]
+                },
+                "currentHeight": 245,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 41
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 41,
+                            "length": 50
+                        },
+                        "contentStart": 41,
+                        "state": 1
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "11954665-afc3-4e04-83dc-6a397a66eee4",
+                    "resultId": "719fa013-1179-4518-fccc-ccf90ba58a89",
+                    "rows": [
+                        {
+                            "0": 3,
+                            "1": "Dangal",
+                            "2": "Sports",
+                            "3": "Nitesh Tiwari",
+                            "4": "Aamir Khan",
+                            "5": "Fatima",
+                            "6": 2016,
+                            "7": "Hindi",
+                            "8": 161,
+                            "9": 8.4,
+                            "10": 700000000,
+                            "11": 2000000000,
+                            "12": null
+                        },
+                        {
+                            "0": 4,
+                            "1": "3 Idiots",
+                            "2": "Drama",
+                            "3": "Rajkumar Hirani",
+                            "4": "Aamir Khan",
+                            "5": "Kareena",
+                            "6": 2009,
+                            "7": "Hindi",
+                            "8": 170,
+                            "9": 8.6,
+                            "10": 550000000,
+                            "11": 3900000000,
+                            "12": null
+                        },
+                        {
+                            "0": 8,
+                            "1": "Pathaan",
+                            "2": "Action",
+                            "3": "Siddharth Anand",
+                            "4": "SRK",
+                            "5": "Deepika",
+                            "6": 2023,
+                            "7": "Hindi",
+                            "8": 146,
+                            "9": 7.5,
+                            "10": 2500000000,
+                            "11": 10500000000,
+                            "12": null
+                        },
+                        {
+                            "0": 9,
+                            "1": "Jawan",
+                            "2": "Action",
+                            "3": "Atlee",
+                            "4": "SRK",
+                            "5": "Nayanthara",
+                            "6": 2023,
+                            "7": "Hindi",
+                            "8": 169,
+                            "9": 8,
+                            "10": 3000000000,
+                            "11": 11500000000,
+                            "12": null
+                        },
+                        {
+                            "0": 14,
+                            "1": "Drishyam",
+                            "2": "Thriller",
+                            "3": "Jeethu Joseph",
+                            "4": "Ajay Devgn",
+                            "5": "Tabu",
+                            "6": 2015,
+                            "7": "Hindi",
+                            "8": 163,
+                            "9": 8.2,
+                            "10": 380000000,
+                            "11": 1000000000,
+                            "12": null
+                        },
+                        {
+                            "0": 15,
+                            "1": "PK",
+                            "2": "Comedy",
+                            "3": "Rajkumar Hirani",
+                            "4": "Aamir Khan",
+                            "5": "Anushka",
+                            "6": 2014,
+                            "7": "Hindi",
+                            "8": 153,
+                            "9": 8.1,
+                            "10": 850000000,
+                            "11": 8500000000,
+                            "12": null
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "MOV_ID",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "TITLE",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "Genere",
+                            "field": "2",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "Director",
+                            "field": "3",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "ACTOR",
+                            "field": "4",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "ACTRESS",
+                            "field": "5",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "RELEASE_YEAR",
+                            "field": "6",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "LANGUAGE",
+                            "field": "7",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "DURATION",
+                            "field": "8",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "RATING",
+                            "field": "9",
+                            "dataType": {
+                                "type": 7,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 53,
+                                "numericScale": 30,
+                                "parameterFormatType": "TwoOrOneOrZero",
+                                "synonyms": [
+                                    "FLOAT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "BUDGET",
+                            "field": "10",
+                            "dataType": {
+                                "type": 5,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 20,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INT8",
+                                    "SERIAL"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "COLLECTION",
+                            "field": "11",
+                            "dataType": {
+                                "type": 5,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 20,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INT8",
+                                    "SERIAL"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "Producer",
+                            "field": "12",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 6 records retrieved in 1.167ms"
+                    },
+                    "totalRowCount": 6,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SELECT*FROM movie WHERE LANGUAGE='Hindi'",
+                    "updatable": true,
+                    "fullTableName": "movie"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 59,
+                "end": 59,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "382172a8-6cb7-4e0f-b8f4-7fda87c18e30"
+                    ]
+                },
+                "currentHeight": 111,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 35
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 35,
+                            "length": 37
+                        },
+                        "contentStart": 35,
+                        "state": 1
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "11954665-afc3-4e04-83dc-6a397a66eee4",
+                    "resultId": "382172a8-6cb7-4e0f-b8f4-7fda87c18e30",
+                    "rows": [
+                        {
+                            "0": 1,
+                            "1": "Bahubali",
+                            "2": "Action",
+                            "3": "Rajamouli",
+                            "4": "Prabhas",
+                            "5": "Anushka",
+                            "6": 2015,
+                            "7": "Telugu",
+                            "8": 159,
+                            "9": 8.5,
+                            "10": 1800000000,
+                            "11": 6500000000,
+                            "12": null
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "MOV_ID",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "TITLE",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "Genere",
+                            "field": "2",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "Director",
+                            "field": "3",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "ACTOR",
+                            "field": "4",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "ACTRESS",
+                            "field": "5",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "RELEASE_YEAR",
+                            "field": "6",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "LANGUAGE",
+                            "field": "7",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "DURATION",
+                            "field": "8",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "RATING",
+                            "field": "9",
+                            "dataType": {
+                                "type": 7,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 53,
+                                "numericScale": 30,
+                                "parameterFormatType": "TwoOrOneOrZero",
+                                "synonyms": [
+                                    "FLOAT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "BUDGET",
+                            "field": "10",
+                            "dataType": {
+                                "type": 5,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 20,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INT8",
+                                    "SERIAL"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "COLLECTION",
+                            "field": "11",
+                            "dataType": {
+                                "type": 5,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 20,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INT8",
+                                    "SERIAL"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "Producer",
+                            "field": "12",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 1 record retrieved in 0.88ms"
+                    },
+                    "totalRowCount": 1,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SELECT*FROM movie WHERE RATING=8.5",
+                    "updatable": true,
+                    "fullTableName": "movie"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 60,
+                "end": 60,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "413cecd1-2b66-4517-ae6c-debcb7098254",
+                            "content": "OK, 0 records retrieved in 0.929ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 13
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 61,
+                "end": 62,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "a0f71edd-589c-42a9-95d3-1f75ddea69d5"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 114
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 114,
+                            "length": 67
+                        },
+                        "contentStart": 114,
+                        "state": 1
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "11954665-afc3-4e04-83dc-6a397a66eee4",
+                    "resultId": "a0f71edd-589c-42a9-95d3-1f75ddea69d5",
+                    "rows": [
+                        {
+                            "0": "Avatar",
+                            "1": 29000000000
+                        },
+                        {
+                            "0": "Titanic",
+                            "1": 18000000000
+                        },
+                        {
+                            "0": "RRR",
+                            "1": 12000000000
+                        },
+                        {
+                            "0": "KGF 2",
+                            "1": 12000000000
+                        },
+                        {
+                            "0": "Jawan",
+                            "1": 11500000000
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "Title",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Collection",
+                            "field": "1",
+                            "dataType": {
+                                "type": 5,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 20,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INT8",
+                                    "SERIAL"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 5 records retrieved in 1.148ms"
+                    },
+                    "totalRowCount": 5,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SELECT Title,Collection FROM movie ORDER BY collection DESC\nLIMIT 5",
+                    "updatable": false,
+                    "fullTableName": "movie"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 63,
+                "end": 63,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "7f7dba0c-b92f-45d9-80e0-b27607eabd52"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 63
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 63,
+                            "length": 43
+                        },
+                        "contentStart": 63,
+                        "state": 1
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "11954665-afc3-4e04-83dc-6a397a66eee4",
+                    "resultId": "7f7dba0c-b92f-45d9-80e0-b27607eabd52",
+                    "rows": [
+                        {
+                            "0": "RRR",
+                            "1": 2022
+                        },
+                        {
+                            "0": "KGF 2",
+                            "1": 2022
+                        },
+                        {
+                            "0": "Pushpa",
+                            "1": 2021
+                        },
+                        {
+                            "0": "Pathaan",
+                            "1": 2023
+                        },
+                        {
+                            "0": "Jawan",
+                            "1": 2023
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "Title",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Release_year",
+                            "field": "1",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 5 records retrieved in 1.189ms"
+                    },
+                    "totalRowCount": 5,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SELECT Title ,Release_year FROM movie WHERE RELEASE_YEAR>=2020",
+                    "updatable": false,
+                    "fullTableName": "movie"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 64,
+                "end": 64,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "bae4bafe-5e44-4733-e4d8-dc1f48f3aa65",
+                            "content": "OK, 0 records retrieved in 12.965ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 51
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 51,
+                            "length": 35
+                        },
+                        "contentStart": 51,
+                        "state": 1
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 65,
+                "end": 65,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "fbcc4c55-d557-4825-cab6-61e1bff60e6e"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 11
+                        },
+                        "contentStart": 1,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "11954665-afc3-4e04-83dc-6a397a66eee4",
+                    "resultId": "fbcc4c55-d557-4825-cab6-61e1bff60e6e",
+                    "rows": [
+                        {
+                            "0": "MOV_ID",
+                            "1": "int",
+                            "2": "NO",
+                            "3": "PRI",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "TITLE",
+                            "1": "varchar(100)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "Genere",
+                            "1": "varchar(50)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "Director",
+                            "1": "varchar(50)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "LeadActor",
+                            "1": "varchar(50)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "ACTRESS",
+                            "1": "varchar(50)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "RELEASE_YEAR",
+                            "1": "int",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "LANGUAGE",
+                            "1": "varchar(30)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "DURATION",
+                            "1": "int",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "RATING",
+                            "1": "float",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "BUDGET",
+                            "1": "bigint",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "COLLECTION",
+                            "1": "bigint",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "Producer",
+                            "1": "varchar(100)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "Field",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Type",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Null",
+                            "field": "2",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Key",
+                            "field": "3",
+                            "dataType": {
+                                "type": 43,
+                                "needsQuotes": true
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Default",
+                            "field": "4",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Extra",
+                            "field": "5",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 13 records retrieved in 1.625ms"
+                    },
+                    "totalRowCount": 13,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "DESC movie",
+                    "updatable": false
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 66,
+                "end": 66,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "27aaddfe-941e-4e21-e124-1560e54c7cff",
+                            "content": "OK, 15 rows affected in 38.654ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 39
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 39,
+                            "length": 47
+                        },
+                        "contentStart": 39,
+                        "state": 1
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 67,
+                "end": 67,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "07261acc-144d-4816-b669-8a5dbbeca3e0"
+                    ]
+                },
+                "currentHeight": 352,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 11
+                        },
+                        "contentStart": 1,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "11954665-afc3-4e04-83dc-6a397a66eee4",
+                    "resultId": "07261acc-144d-4816-b669-8a5dbbeca3e0",
+                    "rows": [
+                        {
+                            "0": "MOV_ID",
+                            "1": "int",
+                            "2": "NO",
+                            "3": "PRI",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "TITLE",
+                            "1": "varchar(100)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "Genere",
+                            "1": "varchar(50)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "Director",
+                            "1": "varchar(50)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "LeadActor",
+                            "1": "varchar(50)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "ACTRESS",
+                            "1": "varchar(50)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "RELEASE_YEAR",
+                            "1": "int",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "LANGUAGE",
+                            "1": "varchar(30)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "DURATION",
+                            "1": "int",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "RATING",
+                            "1": "double",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "BUDGET",
+                            "1": "bigint",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "COLLECTION",
+                            "1": "bigint",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "Producer",
+                            "1": "varchar(100)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "Field",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Type",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Null",
+                            "field": "2",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Key",
+                            "field": "3",
+                            "dataType": {
+                                "type": 43,
+                                "needsQuotes": true
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Default",
+                            "field": "4",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Extra",
+                            "field": "5",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 13 records retrieved in 2.229ms"
+                    },
+                    "totalRowCount": 13,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "DESC movie",
+                    "updatable": false
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 68,
+                "end": 68,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "c433daff-d048-41f8-8bc5-4b3727fcd25b",
+                            "content": "OK, 0 records retrieved in 38.712ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28.796875,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 39
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 39,
+                            "length": 41
+                        },
+                        "contentStart": 39,
+                        "state": 1
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 69,
+                "end": 69,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "f9d9ebbf-5e00-45b5-c1fd-ecc5eb64aa65",
+                            "content": "OK, 0 records retrieved in 6.996ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28.796875,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 86
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 70,
+                "end": 70,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "95032eb7-c77a-4651-abb0-0da72b592b03",
+                            "content": "OK, 0 records retrieved in 5.713ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28.796875,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 20
+                        },
+                        "contentStart": 1,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 71,
+                "end": 71,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "e555929e-6bd4-4df2-b845-db1b8e566670",
+                            "content": "OK, 0 records retrieved in 12.905ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28.796875,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 30
+                        },
+                        "contentStart": 1,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 72,
+                "end": 72,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "4548e140-dc4f-4fa5-a622-f6e417857c99"
+                    ]
+                },
+                "currentHeight": 352,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 18
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "11954665-afc3-4e04-83dc-6a397a66eee4",
+                    "resultId": "4548e140-dc4f-4fa5-a622-f6e417857c99",
+                    "rows": [
+                        {
+                            "0": 1,
+                            "1": "Bahubali",
+                            "2": "Action",
+                            "3": "Rajamouli",
+                            "4": "Prabhas",
+                            "5": "Anushka",
+                            "6": 2015,
+                            "7": "Telugu",
+                            "8": 159,
+                            "9": 8.5,
+                            "10": 1800000000,
+                            "11": 6500000000,
+                            "12": null
+                        },
+                        {
+                            "0": 2,
+                            "1": "RRR",
+                            "2": "Action",
+                            "3": "Rajamouli",
+                            "4": "Ram Charan",
+                            "5": "Alia",
+                            "6": 2022,
+                            "7": "Telugu",
+                            "8": 182,
+                            "9": 9,
+                            "10": 5500000000,
+                            "11": 12000000000,
+                            "12": null
+                        },
+                        {
+                            "0": 3,
+                            "1": "Dangal",
+                            "2": "Sports",
+                            "3": "Nitesh Tiwari",
+                            "4": "Aamir Khan",
+                            "5": "Fatima",
+                            "6": 2016,
+                            "7": "Hindi",
+                            "8": 161,
+                            "9": 8.399999618530273,
+                            "10": 700000000,
+                            "11": 2000000000,
+                            "12": null
+                        },
+                        {
+                            "0": 4,
+                            "1": "3 Idiots",
+                            "2": "Drama",
+                            "3": "Rajkumar Hirani",
+                            "4": "Aamir Khan",
+                            "5": "Kareena",
+                            "6": 2009,
+                            "7": "Hindi",
+                            "8": 170,
+                            "9": 8.600000381469727,
+                            "10": 550000000,
+                            "11": 3900000000,
+                            "12": null
+                        },
+                        {
+                            "0": 5,
+                            "1": "KGF 1",
+                            "2": "Action",
+                            "3": "Prashanth Neel",
+                            "4": "Yash",
+                            "5": "Srinidhi",
+                            "6": 2018,
+                            "7": "Kannada",
+                            "8": 156,
+                            "9": 8.199999809265137,
+                            "10": 800000000,
+                            "11": 2500000000,
+                            "12": null
+                        },
+                        {
+                            "0": 6,
+                            "1": "KGF 2",
+                            "2": "Action",
+                            "3": "Prashanth Neel",
+                            "4": "Yash",
+                            "5": "Srinidhi",
+                            "6": 2022,
+                            "7": "Kannada",
+                            "8": 168,
+                            "9": 8.800000190734863,
+                            "10": 1000000000,
+                            "11": 12000000000,
+                            "12": null
+                        },
+                        {
+                            "0": 7,
+                            "1": "Pushpa",
+                            "2": "Action",
+                            "3": "Sukumar",
+                            "4": "Allu Arjun",
+                            "5": "Rashmika",
+                            "6": 2021,
+                            "7": "Telugu",
+                            "8": 179,
+                            "9": 7.900000095367432,
+                            "10": 1700000000,
+                            "11": 3600000000,
+                            "12": null
+                        },
+                        {
+                            "0": 8,
+                            "1": "Pathaan",
+                            "2": "Action",
+                            "3": "Siddharth Anand",
+                            "4": "SRK",
+                            "5": "Deepika",
+                            "6": 2023,
+                            "7": "Hindi",
+                            "8": 146,
+                            "9": 7.5,
+                            "10": 2500000000,
+                            "11": 10500000000,
+                            "12": null
+                        },
+                        {
+                            "0": 9,
+                            "1": "Jawan",
+                            "2": "Action",
+                            "3": "Atlee",
+                            "4": "SRK",
+                            "5": "Nayanthara",
+                            "6": 2023,
+                            "7": "Hindi",
+                            "8": 169,
+                            "9": 8,
+                            "10": 3000000000,
+                            "11": 11500000000,
+                            "12": null
+                        },
+                        {
+                            "0": 10,
+                            "1": "Titanic",
+                            "2": "Romance",
+                            "3": "James Cameron",
+                            "4": "Leonardo",
+                            "5": "Kate",
+                            "6": 1997,
+                            "7": "English",
+                            "8": 195,
+                            "9": 9.199999809265137,
+                            "10": 2000000000,
+                            "11": 18000000000,
+                            "12": null
+                        },
+                        {
+                            "0": 11,
+                            "1": "Avatar",
+                            "2": "Sci-Fi",
+                            "3": "James Cameron",
+                            "4": "Sam Worthington",
+                            "5": "Zoe",
+                            "6": 2009,
+                            "7": "English",
+                            "8": 162,
+                            "9": 9,
+                            "10": 2500000000,
+                            "11": 29000000000,
+                            "12": null
+                        },
+                        {
+                            "0": 12,
+                            "1": "Inception",
+                            "2": "Sci-Fi",
+                            "3": "Christopher Nolan",
+                            "4": "Leonardo",
+                            "5": "Ellen",
+                            "6": 2010,
+                            "7": "English",
+                            "8": 148,
+                            "9": 8.899999618530273,
+                            "10": 1600000000,
+                            "11": 8300000000,
+                            "12": null
+                        },
+                        {
+                            "0": 13,
+                            "1": "Interstellar",
+                            "2": "Sci-Fi",
+                            "3": "Christopher Nolan",
+                            "4": "Matthew",
+                            "5": "Anne",
+                            "6": 2014,
+                            "7": "English",
+                            "8": 169,
+                            "9": 8.699999809265137,
+                            "10": 1650000000,
+                            "11": 7700000000,
+                            "12": null
+                        },
+                        {
+                            "0": 14,
+                            "1": "Drishyam",
+                            "2": "Thriller",
+                            "3": "Jeethu Joseph",
+                            "4": "Ajay Devgn",
+                            "5": "Tabu",
+                            "6": 2015,
+                            "7": "Hindi",
+                            "8": 163,
+                            "9": 8.199999809265137,
+                            "10": 380000000,
+                            "11": 1000000000,
+                            "12": null
+                        },
+                        {
+                            "0": 15,
+                            "1": "PK",
+                            "2": "Comedy",
+                            "3": "Rajkumar Hirani",
+                            "4": "Aamir Khan",
+                            "5": "Anushka",
+                            "6": 2014,
+                            "7": "Hindi",
+                            "8": 153,
+                            "9": 8.100000381469727,
+                            "10": 850000000,
+                            "11": 8500000000,
+                            "12": null
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "MOV_ID",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "TITLE",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "Genere",
+                            "field": "2",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "Director",
+                            "field": "3",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "LeadActor",
+                            "field": "4",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "ACTRESS",
+                            "field": "5",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "RELEASE_YEAR",
+                            "field": "6",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "LANGUAGE",
+                            "field": "7",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "DURATION",
+                            "field": "8",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "RATING",
+                            "field": "9",
+                            "dataType": {
+                                "type": 9,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 53,
+                                "numericScale": 30,
+                                "parameterFormatType": "TwoOrZero",
+                                "synonyms": [
+                                    "FLOAT8"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "BUDGET",
+                            "field": "10",
+                            "dataType": {
+                                "type": 5,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 20,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INT8",
+                                    "SERIAL"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "COLLECTION",
+                            "field": "11",
+                            "dataType": {
+                                "type": 5,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 20,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INT8",
+                                    "SERIAL"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "Producer",
+                            "field": "12",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 15 records retrieved in 0.775ms"
+                    },
+                    "totalRowCount": 15,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SELECT*from movie",
+                    "updatable": true,
+                    "fullTableName": "movie"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 73,
+                "end": 73,
+                "language": "mysql",
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 0
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        }
+    ]
+}
